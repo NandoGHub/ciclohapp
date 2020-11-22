@@ -9,7 +9,7 @@ class DollarTradingService(object):
 
     def get(self):
         try:
-            response = requests.get(self.url)
+            response = requests.get(self.url, verify=False)
             if response.ok:
                 response = response.json()
                 return self._parse_dollar_trading(response)
