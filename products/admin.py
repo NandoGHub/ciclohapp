@@ -4,7 +4,7 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_fields = [
+    list_display = [
         'uuid',
         'name',
         'price',

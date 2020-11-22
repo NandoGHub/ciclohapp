@@ -4,7 +4,7 @@ from .models import Order, OrderDetail
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_fields = [
+    list_display = [
         'uuid',
         'date_time'
     ]
@@ -13,7 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(OrderDetail)
 class OrderDetailAdmin(admin.ModelAdmin):
-    list_fields = [
+    list_display = [
         'uuid',
         'order',
         'cuantity',
