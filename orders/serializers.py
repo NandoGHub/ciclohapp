@@ -82,7 +82,7 @@ class OrderSerializer(serializers.ModelSerializer):
         return order
 
     def _validated_info(self, payload):
-        if len(payload) < 1 or payload is None:
+        if payload is None:
             return False, "No existen item para el detalle."
         # VALIDA PRODUCTO REPETIDO
         check_products = self._repeat_products(payload)
