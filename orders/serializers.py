@@ -47,7 +47,7 @@ class OrderSerializer(serializers.ModelSerializer):
     def validate_order_details(self, value):
         if len(value) < 1 or value is None:
             raise serializers.ValidationError(
-                "Order_details no puede estar vacío.")
+                "order_details: [] no puede estar vacío.")
         return value
 
     def create(self, validated_data):
@@ -83,7 +83,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def _validated_info(self, payload):
         if payload is None:
-            return False, "No existen item para el detalle."
+            return False, "order_details: [] no puede estar vacío."
         # VALIDA PRODUCTO REPETIDO
         check_products = self._repeat_products(payload)
         if check_products:
