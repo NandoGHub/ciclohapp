@@ -20,13 +20,13 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     def validate_cuantity(self, value):
         if value < 1:
             raise serializers.ValidationError(
-                "La cantidad debe ser mayor que cero")
+                "La cantidad debe ser mayor que cero.")
         return value
 
     def validate_product(self, value):
         if value.stock < 1:
             raise serializers.ValidationError(
-                "El producto no tiene stock disponible")
+                "El producto no tiene stock disponible.")
         return value
 
     class Meta:
@@ -47,7 +47,7 @@ class OrderSerializer(serializers.ModelSerializer):
     def validate_order_details(self, value):
         if len(value) < 1 or value is None:
             raise serializers.ValidationError(
-                "Order_details no puede estar vacío")
+                "Order_details no puede estar vacío.")
         return value
 
     def create(self, validated_data):
@@ -82,14 +82,16 @@ class OrderSerializer(serializers.ModelSerializer):
         return order
 
     def _validated_info(self, payload):
+        if len(payload) < 1 or payload is None:
+            return False, "No existen item para el detalle."
         # VALIDA PRODUCTO REPETIDO
         check_products = self._repeat_products(payload)
         if check_products:
-            return False, "No puede haber productos repetidos"
+            return False, "No puede haber productos repetidos."
         # VALIDA CANTIDAD DE PRODUCTO MAYOR A CERO
         check_cuantity = self._cuantity_zero(payload)
         if check_cuantity:
-            return False, "La cantidad debe ser mayor que cero"
+            return False, "La cantidad debe ser mayor que cero."
         return True, ""
 
     @staticmethod

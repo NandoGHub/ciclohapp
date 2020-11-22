@@ -5,11 +5,12 @@
 
 ### Índice ###
 
-1. Instalación
-2. Ejecutar
-3. Code Style
-4. Crear/Cargar fixtures de datos
-5. Ejecutar Tests
+1. Instalación.
+2. Ejecutar.
+3. Swagger - API docs.
+4. Code Style.
+5. Crear/Cargar fixtures de datos.
+6. Ejecutar Tests.
 
 
 ### 1. Instalación ###
@@ -24,11 +25,13 @@
 
 - **Activar el virtualvenv:** `/path/to/virtualvenv/activate`
 - **Ejecutar el servidor:** `python manage.py runserver`
-- **Ir al navegador:** `http://localhost:8000`, `http://localhost:8000/admin`
-- **Swagger:** `http://localhost:8000/swagger`
+- **Ir al navegador:** `http://127.0.0.1:8000`, `http://localhost:8000/admin`
+
+### 3. Swagger - API docs ###
+- **Swagger:** `http://127.0.0.1:8000/swagger`
 
 
-### 3. Code Style ###
+### 4. Code Style ###
 
 **Para verificar que el código cumpla con PEP8 se puede ejecutar pycodestile.**
 **Para esto hay que posicionarse en la raíz del proyecto y ejecutar lo siguiente:**
@@ -40,7 +43,7 @@
 `pycodestyle . --exclude=migrations,venv,settings`
 
 
-### 4. Crear/Cargar fixtures de datos ###
+### 5. Crear/Cargar fixtures de datos ###
 
 - Ejecutar: `python manage.py dumpdata --format=json products > fixtures/products.json`
 - `json products`: indica el formato (json) y la app (products), y luego con el simbolo `>`
@@ -48,7 +51,7 @@
 - Para cargar esos datos, ejecutar: `python manage.py loaddata fixtures/model_name.json`
 
 
-### 5. Ejecutar Tests ###
+### 6. Ejecutar Tests ###
 
 - Setting: `cicloh.settings`
 - Ejecutar: `pytest`

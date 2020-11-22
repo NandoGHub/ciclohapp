@@ -8,11 +8,13 @@ class DollarTradingService(object):
         self.url = f"{URL_BASE}/api/api.php?type=valoresprincipales"
 
     def get(self):
-        response = requests.get(self.url)
-        if response.ok:
-            response = response.json()
-            return self._parse_dollar_trading(response)
-        return 0
+        try:
+            response = requests.get(self.url)
+            if response.ok:
+                response = response.json()
+                return self._parse_dollar_trading(response)
+        except ConnectionError as e:
+            return 0
 
     @staticmethod
     def _parse_dollar_trading(data):
