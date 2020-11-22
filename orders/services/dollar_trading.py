@@ -13,7 +13,13 @@ class DollarTradingService(object):
             if response.ok:
                 response = response.json()
                 return self._parse_dollar_trading(response)
-        except ConnectionError as e:
+        except requests.HTTPError:
+            return 0
+        except requests.ConnectionError:
+            return 0
+        except requests.Timeout:
+            return 0
+        except requests.RequestException:
             return 0
 
     @staticmethod
