@@ -53,6 +53,4 @@
 
 ### 6. Ejecutar Tests ###
 
-- Setting: `cicloh.settings`
-- Ejecutar: `pytest`
-- Coverage: `pytest --cov`
+- Ejecutar: python manage.py test
