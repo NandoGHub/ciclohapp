@@ -96,13 +96,14 @@ class OrderSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def _repeat_products(payload):
-        products_ids = [item["product"] for item in payload]
+        products_ids = [item.get("product") for item in payload]
         return not len(products_ids) == len(set(products_ids))
 
     @staticmethod
     def _cuantity_zero(payload):
         return len(
-            [item["cuantity"] for item in payload if item["cuantity"] < 1]
+            [item.get("cuantity")
+             for item in payload if item.get("cuantity") < 1]
         ) > 0
 
     def get_total(self, instance):
